@@ -1,0 +1,193 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\burl{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+\providecommand{\doi}[1]{\url{https://doi.org/#1}}
+\bibcommenthead
+
+\bibitem{scanlon2023}
+\bibinfo{author}{Scanlon, B.~R.} \emph{et~al.}
+\newblock \bibinfo{title}{Global water resources and the role of groundwater in
+  a resilient water future}.
+\newblock \emph{\bibinfo{journal}{Nature Reviews Earth \& Environment}}
+  \textbf{\bibinfo{volume}{4}}, \bibinfo{pages}{87--101}
+  (\bibinfo{year}{2023}).
+
+\bibitem{Mehta2024}
+\bibinfo{author}{Mehta, P.} \emph{et~al.}
+\newblock \bibinfo{title}{Half of twenty-first century global irrigation
+  expansion has been in water-stressed regions}.
+\newblock \emph{\bibinfo{journal}{Nature Water}} \textbf{\bibinfo{volume}{2}},
+  \bibinfo{pages}{254--261} (\bibinfo{year}{2024}).
+
+\bibitem{ASABE2021}
+\bibinfo{author}{Eisenhauer, D.~E.}, \bibinfo{author}{Martin, D.~L.},
+  \bibinfo{author}{Heeren, D.~M.} \& \bibinfo{author}{Hoffman, G.~J.}
+\newblock \emph{\bibinfo{title}{Irrigation Systems Management, ASABE.}}
+  (\bibinfo{year}{2021}).
+
+\bibitem{Volk2024}
+\bibinfo{author}{Volk, J.~M.} \emph{et~al.}
+\newblock \bibinfo{title}{Assessing the accuracy of openet satellite-based
+  evapotranspiration data to support water resource and land management
+  applications}.
+\newblock \emph{\bibinfo{journal}{Nature Water}} \textbf{\bibinfo{volume}{2}},
+  \bibinfo{pages}{193--205} (\bibinfo{year}{2024}).
+
+\bibitem{zhang2021}
+\bibinfo{author}{Zhang, J.} \emph{et~al.}
+\newblock \bibinfo{title}{Sustainable irrigation based on co-regulation of soil
+  water supply and atmospheric evaporative demand}.
+\newblock \emph{\bibinfo{journal}{Nature Communications}}
+  \textbf{\bibinfo{volume}{12}}, \bibinfo{pages}{5549} (\bibinfo{year}{2021}).
+
+\bibitem{Celia1990}
+\bibinfo{author}{Celia, M.~A.}, \bibinfo{author}{Bouloutas, E.~T.} \&
+  \bibinfo{author}{Zarba, R.~L.}
+\newblock \bibinfo{title}{A general mass‐conservative numerical solution for
+  the unsaturated flow equation}.
+\newblock \emph{\bibinfo{journal}{Water Resources Research}}
+  \textbf{\bibinfo{volume}{26}}, \bibinfo{pages}{1483--1496}
+  (\bibinfo{year}{1990}).
+\newblock \bibinfo{note}{Export Date: 07 July 2025; Cited By: 1477}.
+
+\bibitem{Pan2019}
+\bibinfo{author}{Pan, T.}, \bibinfo{author}{Hou, S.}, \bibinfo{author}{Liu, Y.}
+  \& \bibinfo{author}{Tan, Q.}
+\newblock \bibinfo{title}{Comparison of three models fitting the soil water
+  retention curves in a degraded alpine meadow region}.
+\newblock \emph{\bibinfo{journal}{Scientific Reports}}
+  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{18407} (\bibinfo{year}{2019}).
+
+\bibitem{leveque2007}
+\bibinfo{author}{LeVeque, R.~J.}
+\newblock \emph{\bibinfo{title}{Finite Difference Methods for Ordinary and
+  Partial Differential Equations}}  (\bibinfo{publisher}{Society for Industrial
+  and Applied Mathematics}, \bibinfo{year}{2007}).
+
+\bibitem{Cuomo2022}
+\bibinfo{author}{Cuomo, S.} \emph{et~al.}
+\newblock \bibinfo{title}{Scientific machine learning through
+  physics–informed neural networks: Where we are and what’s next}.
+\newblock \emph{\bibinfo{journal}{Journal of Scientific Computing}}
+  \textbf{\bibinfo{volume}{92}}, \bibinfo{pages}{88} (\bibinfo{year}{2022}).
+
+\bibitem{Li2024}
+\bibinfo{author}{Li, Y.} \& \bibinfo{author}{Liu, L.}
+\newblock \bibinfo{title}{Physics-informed neural network-based nonlinear model
+  predictive control for automated guided vehicle trajectory tracking}.
+\newblock \emph{\bibinfo{journal}{World Electric Vehicle Journal}}
+  \textbf{\bibinfo{volume}{15}} (\bibinfo{year}{2024}).
+\newblock \bibinfo{note}{Export Date: 03 July 2025; Cited By: 7}.
+
+\bibitem{Zhang2025}
+\bibinfo{author}{Zhang, K.}, \bibinfo{author}{Yu, Q.} \&
+  \bibinfo{author}{Kuang, S.}
+\newblock \bibinfo{title}{Robust control of uncertain quantum systems based on
+  physics-informed neural networks and sampling learning}.
+\newblock \emph{\bibinfo{journal}{IEEE Transactions on Artificial
+  Intelligence}}  (\bibinfo{year}{2025}).
+
+\bibitem{Bandai2022}
+\bibinfo{author}{Bandai, T.} \& \bibinfo{author}{Ghezzehei, T.~A.}
+\newblock \bibinfo{title}{Forward and inverse modeling of water flow in
+  unsaturated soils with discontinuous hydraulic conductivities using
+  physics-informed neural networks with domain decomposition}.
+\newblock \emph{\bibinfo{journal}{Hydrology and Earth System Sciences}}
+  \textbf{\bibinfo{volume}{26}}, \bibinfo{pages}{4469--4495}
+  (\bibinfo{year}{2022}).
+
+\bibitem{Lan2024}
+\bibinfo{author}{Lan, P.}, \bibinfo{author}{Su, J.}, \bibinfo{author}{Zhu, S.},
+  \bibinfo{author}{Huang, J.} \& \bibinfo{author}{Zhang, S.}
+\newblock \bibinfo{title}{Reconstructing unsaturated infiltration behavior with
+  sparse data via physics-informed deep learning}.
+\newblock \emph{\bibinfo{journal}{Computers and Geotechnics}}
+  \textbf{\bibinfo{volume}{168}} (\bibinfo{year}{2024}).
+
+\bibitem{Elkha2024}
+\bibinfo{author}{Elkhadrawi, M.} \emph{et~al.}
+\newblock \bibinfo{title}{Novel physics informed-neural networks for estimation
+  of hydraulic conductivity of green infrastructure as a performance metric by
+  solving richards–richardson pde}.
+\newblock \emph{\bibinfo{journal}{Neural Computing and Applications}}
+  \textbf{\bibinfo{volume}{36}}, \bibinfo{pages}{5555--5569}
+  (\bibinfo{year}{2024}).
+
+\bibitem{Bagheri2025}
+\bibinfo{author}{Bagheri, A.}, \bibinfo{author}{Patrignani, A.},
+  \bibinfo{author}{Ghanbarian, B.} \& \bibinfo{author}{Pourkargar, D.~B.}
+\newblock \bibinfo{title}{A hybrid time series and physics-informed machine
+  learning framework to predict soil water content}.
+\newblock \emph{\bibinfo{journal}{Engineering Applications of Artificial
+  Intelligence}} \textbf{\bibinfo{volume}{144}} (\bibinfo{year}{2025}).
+
+\bibitem{NWS2024}
+\bibinfo{author}{NWS} \& \bibinfo{author}{NOA}.
+\newblock \bibinfo{title}{National weather service api web service
+  documentation} (\bibinfo{year}{2024}).
+
+\bibitem{Franklin1998}
+\bibinfo{author}{Franklin, G.~F.}, \bibinfo{author}{Powell, J.~D.},
+  \bibinfo{author}{Press, E.-K.} \& \bibinfo{author}{Workman, M.~L.}
+\newblock \emph{\bibinfo{title}{Digital Control of Dynamic Systems}}
+  (\bibinfo{publisher}{Ellis-Kagle Press}, \bibinfo{year}{1998}).
+
+\bibitem{Reyes2016}
+\bibinfo{author}{Reyes-Cabrera, J.}, \bibinfo{author}{Zotarelli, L.},
+  \bibinfo{author}{Dukes, M.~D.}, \bibinfo{author}{Rowland, D.~L.} \&
+  \bibinfo{author}{Sargent, S.~A.}
+\newblock \bibinfo{title}{Soil moisture distribution under drip irrigation and
+  seepage for potato production}.
+\newblock \emph{\bibinfo{journal}{Agricultural Water Management}}
+  \textbf{\bibinfo{volume}{169}}, \bibinfo{pages}{183--192}
+  (\bibinfo{year}{2016}).
+
+\bibitem{Rossini2021}
+\bibinfo{author}{Rossini, P.~R.}, \bibinfo{author}{Ciampitti, I.~A.},
+  \bibinfo{author}{Hefley, T.} \& \bibinfo{author}{Patrignani, A.}
+\newblock \bibinfo{title}{A soil moisture-based framework for guiding the
+  number and location of soil moisture sensors in agricultural fields}.
+\newblock \emph{\bibinfo{journal}{Vadose Zone Journal}}
+  \textbf{\bibinfo{volume}{20}}, \bibinfo{pages}{e20159}
+  (\bibinfo{year}{2021}).
+
+\bibitem{Mandal2025}
+\bibinfo{author}{Mandal, D.}, \bibinfo{author}{Khosla, R.},
+  \bibinfo{author}{Longchamps, L.} \& \bibinfo{author}{Joshi, D.}
+\newblock \bibinfo{title}{Soil moisture sensor location-allocation using
+  spatial association of surface moisture data}.
+\newblock \emph{\bibinfo{journal}{Smart Agricultural Technology}}
+  \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{100929}
+  (\bibinfo{year}{2025}).
+
+\bibitem{swap2024}
+\bibinfo{author}{Heinen, M.} \emph{et~al.}
+\newblock \bibinfo{title}{Swap 50 years: Advances in modelling
+  soil-water-atmosphere-plant interactions}.
+\newblock \emph{\bibinfo{journal}{Agricultural Water Management}}
+  \textbf{\bibinfo{volume}{298}}, \bibinfo{pages}{108883}
+  (\bibinfo{year}{2024}).
+
+\bibitem{condeforecast2024}
+\bibinfo{author}{Conde, G.} \& \bibinfo{author}{Guzmán, S.~M.}
+\newblock \bibinfo{title}{Control-oriented forecasting for soil moisture}.
+\newblock \emph{\bibinfo{journal}{IEEE Transactions on Control Systems
+  Technology}}  (\bibinfo{year}{2024}).
+
+\bibitem{rawlings2017}
+\bibinfo{author}{Rawlings, J.~B.}, \bibinfo{author}{Mayne, D.~Q.} \&
+  \bibinfo{author}{Diehl, M.}
+\newblock \emph{\bibinfo{title}{Model Predictive Control: Theory, Computation,
+  and Design}}  (\bibinfo{publisher}{Nob Hill Publishing},
+  \bibinfo{year}{2017}).
+
+\bibitem{allen1998crop}
+\bibinfo{author}{FAO}.
+\newblock \emph{\bibinfo{title}{Crop Evapotranspiration: Guidelines for
+  Computing Crop Water Requirements}}  (\bibinfo{publisher}{Food and
+  Agriculture Organization of the United Nations}, \bibinfo{year}{1998}).
+
+\end{thebibliography}

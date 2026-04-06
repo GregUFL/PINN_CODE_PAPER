@@ -130,46 +130,6 @@ m_mid_np = m_mid.numpy()
 in_mid_np = in_mid.numpy()
 t_mid_np = t_mid.numpy()
 
-# Interactive plot for inputs
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=t_mid_np, y=in_mid_np[:, 0], mode='lines', name='Irrigation (scaled)'))
-fig.add_trace(go.Scatter(x=t_mid_np, y=in_mid_np[:, 1], mode='lines', name='Rain (scaled)'))
-fig.add_trace(go.Scatter(x=t_mid_np, y=in_mid_np[:, 2], mode='lines', name='ET0 (scaled)'))
-fig.update_layout(
-    title="Inputs vs Time (Interactive)",
-    xaxis_title="Time (scaled hours)",
-    yaxis_title="Input values",
-    hovermode="x unified",
-    template="plotly_white"
-)
-fig.show()
-
-# Interactive plot for moisture states
-fig = go.Figure()
-for i in range(6):
-    fig.add_trace(go.Scatter(x=t_mid_np, y=m_mid_np[:, i], mode='lines', name=f"Moisture {i+1} (scaled)"))
-fig.update_layout(
-    title="Moisture States vs Time (Interactive)",
-    xaxis_title="Time (scaled hours)",
-    yaxis_title="Moisture values",
-    hovermode="x unified",
-    template="plotly_white"
-)
-fig.show()
-
-# Interactive plot for moisture variations
-fig = go.Figure()
-for i in range(6):
-    fig.add_trace(go.Scatter(x=t_mid_np, y=dm_mid_np[:, i], mode='lines', name=f"Moisture Δ{i+1} (scaled)"))
-fig.update_layout(
-    title="Moisture Variations vs Time (Interactive)",
-    xaxis_title="Time (scaled hours)",
-    yaxis_title="d(moisture)/dt",
-    hovermode="x unified",
-    template="plotly_white"
-)
-fig.show()
-
 class TwoTankPINN(tf.keras.Model):
     def __init__(self, neurons=56):
         super(TwoTankPINN, self).__init__()
