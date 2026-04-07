@@ -17,3 +17,13 @@ Thumbs.db
 
 # VS Code
 .vscode/
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.out
