@@ -1,0 +1,43 @@
+Reviewer 1
+
+# Comments to the authors
+
+The manuscript "Integrating Fundamental Knowledge and Sensor Data: Physics-Informed Neural Networks for Smart Agricultural Water Management" investigates the problem of making informed irrigation decisions using Physics-Informed Machine Learning techniques to predict when and where plants require water, integrating present soil moisture data with weather forecasts and irrigation history.
+The topic is relevant, addressing the real problem of intelligent and informed water usage.
+The authors report good results in terms of generalization and prediction power of their algorithm, making it suitable to estimate soil water content of crops on a 3D grid and thus make informed decisions and planning for irrigation.
+
+The manuscript is very good overall, but I would like to highlight some weak spot, concern, or curiosity, that may help.
+Particularly, I would suggest a revision regarding the positioning relative to previous work, the definition and interpretation of the analysed quantities, and the absence of suitable benchmark and ablation comparisons.
+---
+
+## Major comments
+
+### 1. State of the art and related works
+Since the ultimate goal of the manuscript is, roughly, to estimate soil water content and irrigate accordingly, a more thorough literature review would provide a more fair context and a better baseline and help the reader better understand where this paper stands, and where it shines.
+For example, you state that "current approaches cannot integrate real-time soil moisture data, weather forecasts, and plant water demands into models capable of predictive control," but this seems to be too strong, also in light of reference 15 that you cite some paragraph later. Indeed, ref.15 considers as "input features for the UQ models" "DOY, precipitation, past SWC measurements, and residual errors from the preceding seven days" for "irrigation scheduling". This content seems in contradiction with your statement "current approaches cannot integrate real-time soil moisture data, weather forecasts, and plant water demands into models capable of predictive control" and later "However, none of these efforts have integrated plant, soil, and water dynamics with crop-specific sensor data to enable optimal irrigation decisions."
+
+### 2. Clear definitions of the considered quantities
+Greater attention to the precise definitions of quantities consider in the manuscript may help clarity and readability:
+- ET0: evapotranspiration is never defined, and the FAO guidelines talking about it are the last reference in your manuscript. A brief introduction on its significance and the formula to compute is suggested;
+- SWC, SM, %VWC: here the manuscript creates confusion using these overlapping terms without proper definition,
+(a) Soil water content is used only in the introduction section with its acronym SWC;
+(b) Soil moisture seems to be the central metric, but its acronym SM is never introduced and appears the first time in Fig.1;
+(c) %VWC is never introduced, except as a unit of measure of soil moisture in Fig.1.
+I suggest to add one paragraph for each quantity, stating briefly how it is measured/computed.
+Most importantly, the ambiguity in the definition of %VWC makes it a difficult metric to interpret.
+I discuss my concerns below.
+
+### 3. Interpretability of results
+Due to the "relative" nature of the main metric, %VWC, the reported mean squared error will be as well relative. Without an absolute value of the errors, it may be difficult to quantify their scale. Particularly in this context, absolute errors are related to water wastage, which is a central problem in Smart Agriculture.
+Then, the reported test-set R^2 values appear inconsistent with the close agreement suggested visually in Fig. 1. Please clarify how R^2 was calculated and explain this apparent discrepancy.
+It would be interesting to see a scatterplot of predicted vs measured data, to understand the real capabilities of the model, along with a more thorough comment about "the measured data could be better explained by the average than by the model". Also, what happens when data is concatenated? And how is it concatenated?
+Finally, a major flaw of the manuscript is the lack of a benchmark. Indeed, the proposed algorithm is really complex, by your own words "including numerical integration of the model in the training process significantly complicates the optimization problem". Is this complexity justified? Are the results supported by theory? Are there other methods, either AI or not, to estimate these quantities? Is it possible to design a simpler, or more traditional, ML algorithm suited for this task? For example, does the plant uptake estimated by NNs have some reference value in literature or does it follow some rationale? Also, an ablation study removing the physics-informed terms would also help establish which components are responsible for the reported performance.
+
+## Minor comments
+- [page 6 / page 5] an illustration of the crop configuration may help the reader better understand the data and better follow your statements "...because the crop is in a bed with a ditch next to it, which directly evaporates water relative to ET0 patterns," and "The direct influence of rain at deeper layers is related to the terrain configuration". Also the dimensions or spatial extent of the considered field are unclear.
+- [page 12] the unit of irrigation flow m3 needs an exponentiation;
+- [fig.4] A better caption explaining all the elements of the Figure may help. The network labels and functions are not clear (f_{i, i+1}(m_i, m_{i+1})) should be at depth 5 and f_i(m_i) at depth 2 following the first row.
+- [fig.3] the last column mixes the irrigation plot and the "row labels" ("Estimated Flows at 15cm etc...). Even if it is difficult to squeeze all these columns in a figure, maybe a scientific notation in the "Lateral outflow" y-axis tick labels may help gain some space, and maybe putting these "row labels" on the left-hand side, shortened to just the centimeters, is enough.
+- [fig.2] the boxplot needs more vertical space, and the heatmap may be enhanced by using a dark frame to separate the white of the plot (0 error) from the white background.
+- [eq.13] in the summation, t_k is both the running index and the extreme element, maybe you can sum over j = k-n_e+1 to k, and use t_j in the equation.
+- [fig.5] qirr instead of q_irr.

@@ -1,0 +1,27 @@
+# PINN Soil Moisture Prediction - Requirements
+#
+# Setup (from the code/ directory):
+#   python3 -m venv .venv
+#   source .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# Then open paper_figures.ipynb and select the .venv kernel.
+
+# Core dependencies
+numpy==2.1.3
+pandas==2.2.3
+scipy==1.15.3
+
+# Deep Learning
+tensorflow==2.19.0
+keras==3.10.0
+tf_keras==2.19.0
+h5py==3.13.0
+
+# Visualization
+plotly==6.1.2
+kaleido==1.0.0
+
+# Jupyter
+ipykernel==6.29.5
+nbformat==5.10.4

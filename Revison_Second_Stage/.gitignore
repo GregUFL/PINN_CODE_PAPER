@@ -1,0 +1,6 @@
+# Exclude third-party copyrighted reference PDFs and unrelated example files
+New_Literature/
+Example/
+
+# Run logs
+*.log

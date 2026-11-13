@@ -1,0 +1,35 @@
+You need to make revisions to your submission
+Your reviewers have provided feedback on your submission. There are revisions you need to make before your submission can progress. We’ve also emailed gregory.condemen@ufl.edu with more details.
+
+We recommend submitting your revisions by 24 November 2026.
+
+Feedback from the Editor
+Read editor’s comments
+Dear Dr Conde,
+
+Your manuscript, "Integrating Fundamental Knowledge and Sensor Data: Physics-Informed Neural Networks for Smart Agricultural Water Management", has now been assessed.
+
+We invite you to revise your paper, carefully addressing the comments from the reviewers and the editor. Please ensure the results are accurately reported, any overstated conclusions are rewritten and the limitations of the work fully explained. When your revision is ready, please submit the updated manuscript and a point-by-point response. This will help us move to a swift decision.
+
+Please note that if your manuscript uses any custom or bespoke computational tool or code, or reports a new algorithm, tool, software, or a pipeline (even if individual components are not new), the underlying code must be deposited in a recognised DOI-assigning repository (e.g. zenodo) and linked either from Methods or a dedicated Code Availability section.
+
+Editor Comments
+
+"We have received two reviews of your manuscript. Both reviewers find the topic relevant and potentially valuable. However, based on their comments, the manuscript requires major revision.
+
+Please respond to all reviewer comments point by point, provide detailed explanations of the changes made, and highlight the modifications in the revised manuscript. We look forward to receiving your revised and improved manuscript."
+-Jianglong Shen
+
+We recommend submitting all revisions within the mentioned deadline.
+
+If you need more time, please contact us and include your submission ID.
+
+Kind regards,
+
+Stefi Sebastian
+Assistant Editor
+Scientific Reports
+
+Support contact: srep@nature.com
+
+Submission ID: df9266f4-d2fd-4aa0-8ca7-115166eb6609
