@@ -468,7 +468,8 @@ def check_jacobian_and_equilibrium(m_info, data):
             "dom_dq_all_neg_pct": 0.0, "dom_dr_all_neg_pct": 0.0,
             "dom_det_pos_pct": 0.0, "dom_det_max": 0.0,
             "traj_dq_l1_neg_pct": 0.0, "traj_dq_all_neg_pct": 0.0,
-            "traj_det_pos_pct": 0.0,
+            "traj_dr_all_neg_pct": 0.0, "traj_det_pos_pct": 0.0,
+            "traj_det_max": 0.0,
             "zero_eq_max_pos_dmdt": 0.0, "zero_eq_min_neg_dmdt": 0.0,
             "dry_et_min_neg_dmdt": 0.0,
         }
@@ -515,7 +516,9 @@ def check_jacobian_and_equilibrium(m_info, data):
         "dom_det_max": s_dom["det_max"],
         "traj_dq_l1_neg_pct": s_trj["dq_l1_neg_pct"],
         "traj_dq_all_neg_pct": s_trj["dq_all_neg_pct"],
+        "traj_dr_all_neg_pct": s_trj["dr_all_neg_pct"],
         "traj_det_pos_pct": s_trj["det_pos_pct"],
+        "traj_det_max": s_trj["det_max"],
         "zero_eq_max_pos_dmdt": float(np.max(dm_z[0])),
         "zero_eq_min_neg_dmdt": float(np.min(dm_z[0])),
         "dry_et_min_neg_dmdt": float(np.min(dm_z[1:])),
@@ -710,13 +713,13 @@ def main():
         log(f"{r['model']:<42} | {r['val3d_5cm_rmse']:6.2f} | {r['val3d_15cm_rmse']:6.2f} | {r['val3d_25cm_rmse']:6.2f} | {r['val3d_35cm_rmse']:6.2f} | {r['val3d_45cm_rmse']:6.2f} | {r['val3d_55cm_rmse']:6.2f} | {r['val3d_rmse']:7.2f}")
 
     log("\nCONTROL-ORIENTED ADMISSIBILITY & FLUX CONSTRAINTS")
-    log("-" * 145)
-    log(f"{'Model':<42} | {'Trj dq1<0%':>10} | {'Dom dqAll<0%':>12} | {'Dom dr<0%':>9} | {'Trj dET0>0%':>11} | {'Dom dET0>0%':>11} | {'ZeroEq + / -':>14} | {'Flux c1/c2 %':>13}")
-    log("-" * 145)
+    log("-" * 165)
+    log(f"{'Model':<42} | {'Trj dqAll<0%':>12} | {'Trj dq1<0%':>10} | {'Trj dr<0%':>9} | {'Trj dET0>0%':>11} | {'Trj maxdET0':>11} | {'ZeroEq + / -':>14} | {'Flux c1/c2 %':>13}")
+    log("-" * 165)
     for _, r in df_master.iterrows():
         c12 = f"{r['flux_c1_neg_pct']:.2f}/{r['flux_c2_mon_pct']:.2f}" if pd.notna(r["flux_c1_neg_pct"]) else "N/A"
         zeq = f"{r['zero_eq_max_pos_dmdt']:+.3f}/{r['zero_eq_min_neg_dmdt']:+.3f}"
-        log(f"{r['model']:<42} | {r['traj_dq_l1_neg_pct']:9.2f}% | {r['dom_dq_all_neg_pct']:11.2f}% | {r['dom_dr_all_neg_pct']:8.2f}% | {r['traj_det_pos_pct']:10.2f}% | {r['dom_det_pos_pct']:10.2f}% | {zeq:>14} | {c12:>13}")
+        log(f"{r['model']:<42} | {r['traj_dq_all_neg_pct']:11.2f}% | {r['traj_dq_l1_neg_pct']:9.2f}% | {r['traj_dr_all_neg_pct']:8.2f}% | {r['traj_det_pos_pct']:10.2f}% | {r['traj_det_max']:+11.4f} | {zeq:>14} | {c12:>13}")
 
     log("\nNEURAL PLANT EVAPOTRANSPIRATIVE DEPLETION pc_i DIAGNOSTICS (PROPOSED PINN)")
     log("-" * 90)
@@ -726,6 +729,27 @@ def main():
     tot_tr_mean = sum(layer_means_tr.values())
     shares = ", ".join([f"{d}: {v:.2f} mm/d ({100*v/tot_tr_mean:.1f}%)" for d, v in layer_means_tr.items()])
     log(f"Layer breakdown (Train mean): {shares}")
+
+    log("\nCOUNTERFACTUAL IRRIGATION PERCOLATION BELOW 30 CM (PROPOSED PINN)")
+    log("-" * 90)
+    for tag_p, st_p, t_p, in_p in [
+        ("Training (35d)", data["st_tr_tf"], data["t_tr_tf"], data["in_tr_tf"][:-1]),
+        ("Unseen (33d)", data["st_un_tf"], data["t_un_tf"], data["in_un_tf"][:-1]),
+    ]:
+        p_w = rk4_integration(pinn_full_sys, t_p, st_p[0].numpy(), 1.0, forced_data=in_p).numpy()[:-1]
+        in_no = np.array(in_p.numpy(), copy=True)
+        in_no[:, 0] = 0.0
+        p_n = rk4_integration(pinn_full_sys, t_p, st_p[0].numpy(), 1.0, forced_data=tf.constant(in_no, tf.float64)).numpy()[:-1]
+        f3_w = pinn_full.f3_out(pinn_full.f3_dense3(pinn_full.f3_dense2(pinn_full.f3_dense1(tf.constant(p_w[:, 2:3], tf.float64))))).numpy()[:, 0] * NORM["moisture"]
+        f3_n = pinn_full.f3_out(pinn_full.f3_dense3(pinn_full.f3_dense2(pinn_full.f3_dense1(tf.constant(p_n[:, 2:3], tf.float64))))).numpy()[:, 0] * NORM["moisture"]
+        f34_w = pinn_full.f34_out(pinn_full.f34_dense3(pinn_full.f34_dense2(pinn_full.f34_dense1(tf.constant(p_w[:, 2:4], tf.float64))))).numpy()[:, 0] * NORM["moisture"]
+        f34_n = pinn_full.f34_out(pinn_full.f34_dense3(pinn_full.f34_dense2(pinn_full.f34_dense1(tf.constant(p_n[:, 2:4], tf.float64))))).numpy()[:, 0] * NORM["moisture"]
+        in_irr = pinn_full.inflow_out(pinn_full.inflow_dense3(pinn_full.inflow_dense2(pinn_full.inflow_dense1(in_p[:, 0:1])))).numpy()[:, 0] * NORM["moisture"]
+        tot_irr = float(np.sum(in_irr))
+        irr_h = float(np.sum(in_p[:, 0].numpy()))
+        grav_d = float(np.sum(f3_w - f3_n))
+        net_d = float(np.sum((f3_w + f34_w) - (f3_n + f34_n)))
+        log(f"{tag_p:<16}: irr={tot_irr:.2f} mm ({irr_h:.1f} h, ~{tot_irr/irr_h:.2f} mm/h) | grav_below_30cm={grav_d:.2f} mm ({100*grav_d/tot_irr:.1f}%) | net_below_30cm={net_d:.2f} mm ({100*net_d/tot_irr:.1f}%)")
     log(f"Total elapsed time: {(time.time() - t0)/60.0:.2f} min")
 
     summary_txt = os.path.join(SCRIPT_DIR, "benchmark_ablation_summary.txt")

@@ -102,8 +102,8 @@ def main():
         p_txt = "p < 1e-300" if p_val == 0.0 else f"p = {p_val:.2e}"
         sign_str = "+" if intercept >= 0 else "-"
         stats_html = (
-            f"Pooled RMSE = {rmse:.2f} %VWC<br>"
-            f"Pooled R<sup>2</sup> = {r2:.3f}<br>"
+            f"Overall RMSE = {rmse:.2f} %VWC<br>"
+            f"Overall R<sup>2</sup> = {r2:.3f}<br>"
             f"Pearson r = {r_val:.3f} ({p_txt})<br>"
             f"OLS: y = {slope:.2f}x {sign_str} {abs(intercept):.2f}"
         )
@@ -130,17 +130,17 @@ def main():
 
     fig.update_annotations(font_size=17)
     fig.update_layout(
-        template="plotly_white", width=1180, height=540,
-        margin=dict(l=75, r=30, t=55, b=95),
+        template="plotly_white", width=1180, height=560,
+        margin=dict(l=75, r=30, t=55, b=115),
         font=dict(family="Arial", color="black"),
         legend=dict(
-            orientation="h", x=0.5, xanchor="center", y=-0.16, yanchor="top",
-            font=dict(size=13), itemsizing="constant",
+            orientation="h", x=0.5, xanchor="center", y=-0.17, yanchor="top",
+            font=dict(size=26), itemsizing="constant",
         ),
     )
 
     out_pdf = os.path.join(OUT_PAPER_DIR, "predicted_vs_measured_scatter.pdf")
-    fig.write_image(out_pdf, format="pdf", width=1180, height=540, scale=2)
+    fig.write_image(out_pdf, format="pdf", width=1180, height=560, scale=2)
     print(f"Saved {out_pdf}")
 
 
